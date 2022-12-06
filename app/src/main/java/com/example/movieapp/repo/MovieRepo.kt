@@ -37,14 +37,22 @@ class MovieRepo(private val database: MoviesDatabase) {
      */
     suspend fun refreshMovies() {
         withContext(Dispatchers.IO) {
-            val topRatedRespond = MovieApi.retrofitService.getTopRatedMovie()
-            database.movieDao.insertAll(*topRatedRespond.asDatabaseModel())
+            try {
+                val topRatedRespond = MovieApi.retrofitService.getTopRatedMovie()
+                database.movieDao.insertAll(*topRatedRespond.asDatabaseModel())
+            }catch (ex:Exception){
+
+            }
         }
     }
 
     suspend fun setFavourite(id:Int,favourite:Boolean) {
         withContext(Dispatchers.IO) {
-            database.movieDao.setFavourite(id, favourite )
+            try {
+                database.movieDao.setFavourite(id, favourite)
+            }catch (ex:Exception){
+
+            }
         }
     }
 }

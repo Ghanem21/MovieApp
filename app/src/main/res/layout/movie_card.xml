@@ -27,18 +27,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
+                app:imageUrl="@{movie.image}"
+                app:layout_constraintBottom_toTopOf="@+id/title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:imageUrl="@{movie.image}"
+                app:layout_constraintVertical_chainStyle="packed"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
             <TextView
                 android:id="@+id/title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:text="@{movie.title}"
                 android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                app:layout_constraintBottom_toTopOf="@+id/movie_vote"
+                app:layout_constraintEnd_toStartOf="@+id/favorite_icon"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/movie_image" />
 
@@ -46,7 +54,6 @@
                 android:id="@+id/movie_vote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="@{movie.voteAverage}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -61,6 +68,8 @@
                 android:layout_marginEnd="16dp"
                 app:layout_constraintBottom_toBottomOf="@+id/movie_vote"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/title"
                 app:layout_constraintTop_toTopOf="@+id/title"
                 app:setFavouriteState="@{movie.favourite}" />
         </androidx.constraintlayout.widget.ConstraintLayout>
